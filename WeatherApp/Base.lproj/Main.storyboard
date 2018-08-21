@@ -62,27 +62,27 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4oH-bt-4NH" userLabel="weatherView">
                                 <rect key="frame" x="0.0" y="106" width="375" height="561"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rih-jr-ghS" userLabel="backgroundImage">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rih-jr-ghS" userLabel="backgroundImage">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="561"/>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="110" translatesAutoresizingMaskIntoConstraints="NO" id="JIb-kL-fen">
-                                        <rect key="frame" x="13" y="95" width="350.5" height="371.5"/>
+                                        <rect key="frame" x="13" y="93" width="350.5" height="375.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="top" axis="vertical" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="1jS-L5-Vz1">
-                                                <rect key="frame" x="0.0" y="0.0" width="350.5" height="179.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="350.5" height="182"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saint-Petersburg" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xWt-tv-zGk" userLabel="cityLabel">
-                                                        <rect key="frame" x="0.0" y="0.0" width="350.5" height="48.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="350.5" height="51"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="330" id="ePB-oD-QHi"/>
                                                             <constraint firstAttribute="width" constant="350" id="tsf-Jl-lig"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="41"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="43"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+34˚" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rzy-SQ-dEe" userLabel="tempLabel">
-                                                        <rect key="frame" x="0.0" y="69.5" width="350.5" height="110"/>
+                                                        <rect key="frame" x="0.0" y="72" width="350.5" height="110"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="93"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -92,23 +92,23 @@
                                                 <variation key="heightClass=regular-widthClass=compact" axis="vertical"/>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="c9X-2f-9Y1">
-                                                <rect key="frame" x="0.0" y="289.5" width="350.5" height="82"/>
+                                                <rect key="frame" x="0.0" y="292" width="350.5" height="83.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="wind 5 m/s" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbb-6J-wYE" userLabel="windLabel">
-                                                        <rect key="frame" x="0.0" y="0.0" width="350.5" height="24"/>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="20"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="350.5" height="24.5"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="21"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="pressure 117 mm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pPe-ot-29y" userLabel="pressureLabel">
-                                                        <rect key="frame" x="0.0" y="29" width="350.5" height="24"/>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="20"/>
+                                                        <rect key="frame" x="0.0" y="29.5" width="350.5" height="24.5"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="21"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="humidity 66%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uud-bx-NVe" userLabel="humidityLabel">
-                                                        <rect key="frame" x="0.0" y="58" width="350.5" height="24"/>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="20"/>
+                                                        <rect key="frame" x="0.0" y="59" width="350.5" height="24.5"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="21"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -119,7 +119,6 @@
                                         <variation key="heightClass=compact-widthClass=compact" alignment="center" spacing="10"/>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="0.9211425781" blue="0.071940104170000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="JIb-kL-fen" firstAttribute="centerY" secondItem="4oH-bt-4NH" secondAttribute="centerY" id="49B-M3-K7G"/>
                                     <constraint firstItem="Rih-jr-ghS" firstAttribute="leading" secondItem="4oH-bt-4NH" secondAttribute="leading" id="CW1-Xy-Gjh"/>
@@ -159,6 +158,11 @@
                             <outlet property="searchTextFieldConstarint" destination="h0x-on-xmm" id="uTE-H4-WKs"/>
                             <outlet property="tempLabel" destination="rzy-SQ-dEe" id="hTR-Zz-dwv"/>
                             <outlet property="windLabel" destination="lbb-6J-wYE" id="PMa-Cf-oPd"/>
+                            <outletCollection property="labelsCollection" destination="rzy-SQ-dEe" collectionClass="NSMutableArray" id="NUi-xc-bJs"/>
+                            <outletCollection property="labelsCollection" destination="pPe-ot-29y" collectionClass="NSMutableArray" id="NcP-0s-xrh"/>
+                            <outletCollection property="labelsCollection" destination="xWt-tv-zGk" collectionClass="NSMutableArray" id="fGZ-fv-qMO"/>
+                            <outletCollection property="labelsCollection" destination="lbb-6J-wYE" collectionClass="NSMutableArray" id="2IZ-4I-2OW"/>
+                            <outletCollection property="labelsCollection" destination="uud-bx-NVe" collectionClass="NSMutableArray" id="ey9-u3-TQR"/>
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="5YF-hO-NJ0"/>

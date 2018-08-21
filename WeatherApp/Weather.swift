@@ -8,6 +8,18 @@
 
 import Foundation
 
+
+enum WeatherType: String {
+    case sun        = "sun.jpg"
+    case rain       = "rain.jpg"
+    case snow       = "snow.jpg"
+    case fog        = "fog.jpeg"
+    case cloud      = "cloudy.jpg"
+    case night      = "night.jpg"
+    case unknown    = "unknown"
+}
+
+
 struct Weather {
     let temperature: Double
     let humidity: Double
@@ -17,4 +29,39 @@ struct Weather {
 }
 
 
+
+
+
+
+
+extension Weather {
+    var pressureString: String {
+        return "\(pressure) mm"
+    }
+    
+    var humidityString: String {
+        return "\(humidity) %"
+    }
+    
+    var temperatureString: String {
+        return "\(temperature)˚C"
+    }
+    
+    var windString: String {
+        return "\(wind) m/s"
+    }
+    
+    var weatherType: WeatherType {
+        switch self.weatherIcon {
+        case "sun": return .sun
+        case "clear-night", "partly-cloudy-night": return .night
+        case "fog": return .fog
+        case "couldy", "partly-cloudy-day": return .cloud
+        case "sleet", "snow": return .snow
+        case "rain": return .rain
+        default: return .unknown
+        }
+    }
+    
+}
 

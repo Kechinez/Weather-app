@@ -28,9 +28,9 @@ extension Weather: ParsingJSON {
             let wind = currentWeatherJson["windSpeed"] as? Double,
             let icon = currentWeatherJson["icon"] as? String else { return nil }
         
-        self.humidity = humidity
-        self.pressure = pressure
-        self.temperature = temperature
+        self.humidity = (humidity * 0.750062 * 100).rounded()
+        self.pressure = pressure.rounded()
+        self.temperature = ((temperature - 32) / 1.8).rounded()
         self.wind = wind
         self.weatherIcon = icon
     }

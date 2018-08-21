@@ -19,16 +19,29 @@ class ViewController: UIViewController, UITextFieldDelegate, Networking {
     }
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //weatherView.backgroundLabel.alpha = 0.2
+        weatherView.gradientLayer = CAGradientLayer()
+        
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateOfficialRequstedCityName(notification:)), name: NSNotification.Name(rawValue: RequestedCityWasUpdatedNotificationKey), object: nil)
         
         
     }
 
+    override func viewDidLayoutSubviews() {
+        guard let heightOfNavBar = self.navigationController?.navigationBar.frame.height else { return }
+        let height = self.view!.frame.height - heightOfNavBar
+        weatherView.gradientLayer.frame = CGRect(x: 0, y: heightOfNavBar, width: self.view!.frame.width, height: height)
+    
+        self.view!.layer.insertSublayer(weatherView.gradientLayer, at: 0)
+    }
+    
+    
     @objc func updateOfficialRequstedCityName(notification: NSNotification) {
-        print("official name of city is updated!")
         officialRequstedCityName = nil
         guard let tempRequestedCity = notification.userInfo?["value"] as? String else { return }
         officialRequstedCityName = tempRequestedCity
@@ -41,9 +54,11 @@ class ViewController: UIViewController, UITextFieldDelegate, Networking {
         self.requestTranslationNameToCoordinates(with: searchInput) { (coordinates) in
             guard let notNilCoordinates = coordinates else { return }
             
-            self.requestWeather(in: notNilCoordinates, completionHandler: { (weather) in
+            self.requestWeather(in: notNilCoordinates, completionHandler: { [weak self] (weather) in
                 guard let notNilWeather = weather else { return }
-                print("Request is successed. \n weather is \(notNilWeather.weatherIcon), t = \(notNilWeather.temperature)")
+                guard let notNilOfficialRequestedCityName = self?.officialRequstedCityName else { return }
+                self?.weatherView.updateUI(with: notNilWeather, in: notNilOfficialRequestedCityName)
+                
             })
         }
         
