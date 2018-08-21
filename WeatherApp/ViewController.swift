@@ -8,7 +8,11 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate {
+let RequestedCityWasUpdatedNotificationKey = "requestedCityWasUpdated"
+
+class ViewController: UIViewController, UITextFieldDelegate, Networking {
+    
+    var officialRequstedCityName: String?
     
     unowned var weatherView: WeatherView  {
         return self.view as! WeatherView
@@ -18,11 +22,33 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(updateOfficialRequstedCityName(notification:)), name: NSNotification.Name(rawValue: RequestedCityWasUpdatedNotificationKey), object: nil)
+        
+        
     }
 
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        //weatherView.
+    @objc func updateOfficialRequstedCityName(notification: NSNotification) {
+        print("official name of city is updated!")
+        officialRequstedCityName = nil
+        guard let tempRequestedCity = notification.userInfo?["value"] as? String else { return }
+        officialRequstedCityName = tempRequestedCity
+        
     }
+    
+    
+    func startWeatherRequest() {
+        let searchInput = weatherView.searchInputText!
+        self.requestTranslationNameToCoordinates(with: searchInput) { (coordinates) in
+            guard let notNilCoordinates = coordinates else { return }
+            
+            self.requestWeather(in: notNilCoordinates, completionHandler: { (weather) in
+                guard let notNilWeather = weather else { return }
+                print("Request is successed. \n weather is \(notNilWeather.weatherIcon), t = \(notNilWeather.temperature)")
+            })
+        }
+        
+    }
+    
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         weatherView.animateCancelButtonAppearing()
@@ -32,6 +58,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         weatherView.animateCancelButtonDisappearing()
         textField.resignFirstResponder()
+        
+        if textField.text != "" {
+            startWeatherRequest()
+        }
+        
+        
         return true
     }
     

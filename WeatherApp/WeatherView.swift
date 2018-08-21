@@ -19,7 +19,9 @@ class WeatherView: UIView {
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var searchTextField: UITextField!
     
-    
+    var searchInputText: String? {
+        return (cityLabel.text != "" ? cityLabel.text! : "")
+    }
     
     
     func hideCancelButton() {
