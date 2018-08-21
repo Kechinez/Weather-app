@@ -13,6 +13,7 @@
 		3D5C1613212AC6000008D303 /* WeatherApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3D5C1611212AC6000008D303 /* WeatherApp.xcdatamodeld */; };
 		3D5C1615212AC6030008D303 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D5C1614212AC6030008D303 /* Assets.xcassets */; };
 		3D5C1618212AC6030008D303 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D5C1616212AC6030008D303 /* LaunchScreen.storyboard */; };
+		3D5C1620212C25260008D303 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5C161F212C25260008D303 /* WeatherView.swift */; };
 		A8FDA2CA11D6F0CA43D53742 /* Pods_WeatherApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39269D2C4D7BE080DB0077D8 /* Pods_WeatherApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +27,7 @@
 		3D5C1614212AC6030008D303 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3D5C1617212AC6030008D303 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D5C1619212AC6030008D303 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D5C161F212C25260008D303 /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 		93990996C7BCD0035FDB1888 /* Pods-WeatherApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherApp/Pods-WeatherApp.debug.xcconfig"; sourceTree = "<group>"; };
 		FE1599AFCA44E44B3C24D4E4 /* Pods-WeatherApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherApp/Pods-WeatherApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -74,6 +76,7 @@
 				3D5C160A212AC6000008D303 /* AppDelegate.swift */,
 				3D5C160C212AC6000008D303 /* ViewController.swift */,
 				3D5C160E212AC6000008D303 /* Main.storyboard */,
+				3D5C161F212C25260008D303 /* WeatherView.swift */,
 				3D5C1614212AC6030008D303 /* Assets.xcassets */,
 				3D5C1616212AC6030008D303 /* LaunchScreen.storyboard */,
 				3D5C1619212AC6030008D303 /* Info.plist */,
@@ -222,6 +225,7 @@
 				3D5C1613212AC6000008D303 /* WeatherApp.xcdatamodeld in Sources */,
 				3D5C160D212AC6000008D303 /* ViewController.swift in Sources */,
 				3D5C160B212AC6000008D303 /* AppDelegate.swift in Sources */,
+				3D5C1620212C25260008D303 /* WeatherView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,7 +373,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9QD9Y49583;
 				INFOPLIST_FILE = WeatherApp/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kechin.WeatherApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -385,7 +392,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9QD9Y49583;
 				INFOPLIST_FILE = WeatherApp/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kechin.WeatherApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

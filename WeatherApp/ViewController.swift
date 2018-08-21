@@ -8,18 +8,42 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, UITextFieldDelegate {
+    
+    unowned var weatherView: WeatherView  {
+        return self.view as! WeatherView
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        //weatherView.
     }
-
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        weatherView.animateCancelButtonAppearing()
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        weatherView.animateCancelButtonDisappearing()
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        weatherView.hideCancelButton()
+    }
+    
+    @IBAction func cancelButton(_ sender: UIButton) {
+        
+        
+    }
 
 }
 
