@@ -53,7 +53,7 @@ extension Weather {
     
     var weatherType: WeatherType {
         switch self.weatherIcon {
-        case "sun": return .sun
+        case "clear-day": return .sun
         case "clear-night", "partly-cloudy-night": return .night
         case "fog": return .fog
         case "couldy", "partly-cloudy-day": return .cloud
