@@ -142,7 +142,7 @@ class WeatherView: UIView {
         self.humidityLabel.text = weather.humidityString
         self.pressureLabel.text = weather.pressureString
         self.windLabel.text = weather.windString
-        self.backgroundLabel.image = UIImage(named: weather.weatherType.rawValue)
+        self.backgroundLabel.image = UIImage(named: weather.weatherType.corespondingImageName)
         
         updateGradientLayerColor(accordingToThe: weather.weatherType)
         updateTextColor(accordingToThe: weather.weatherType)

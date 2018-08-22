@@ -10,7 +10,7 @@ import UIKit
 
 let RequestedCityWasUpdatedNotificationKey = "requestedCityWasUpdated"
 
-class ViewController: UIViewController, UITextFieldDelegate, Networking {
+class WeatherViewController: UIViewController, UITextFieldDelegate, Networking {
     
     var officialRequstedCityName: String?
     
@@ -92,5 +92,9 @@ class ViewController: UIViewController, UITextFieldDelegate, Networking {
         
     }
 
+    
+
+    
+    
 }
 

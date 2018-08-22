@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Weather View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="WeatherViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="WeatherView" customModule="WeatherApp" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -165,11 +165,201 @@
                             <outletCollection property="labelsCollection" destination="uud-bx-NVe" collectionClass="NSMutableArray" id="ey9-u3-TQR"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" id="5YF-hO-NJ0"/>
+                    <navigationItem key="navigationItem" id="5YF-hO-NJ0">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="search" id="iaC-jg-3tG">
+                            <connections>
+                                <segue destination="NFd-Ao-mgM" kind="show" id="Vga-ny-JiT"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="932" y="775.86206896551732"/>
+        </scene>
+        <!--History-->
+        <scene sceneID="CE3-pT-XKX">
+            <objects>
+                <tableViewController id="NFd-Ao-mgM" customClass="SearchViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="7yg-8L-ubX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ZN0-64-zL0">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZN0-64-zL0" id="GKM-Cy-f5p">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="NFd-Ao-mgM" id="4Ac-pK-mZV"/>
+                            <outlet property="delegate" destination="NFd-Ao-mgM" id="PQi-C5-gWD"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="History" id="pMm-09-331">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="xz3-FY-M8G">
+                            <connections>
+                                <segue destination="YiR-ri-m3I" kind="show" id="iXQ-PP-vBL"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hfj-h2-dUd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="DNf-Uz-CTn" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1767" y="776"/>
+        </scene>
+        <!--Advanced search-->
+        <scene sceneID="8Oi-wb-fpr">
+            <objects>
+                <viewController id="YiR-ri-m3I" customClass="SearchFilterViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kPo-Xu-H6K">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="city for weather searcing" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vlj-I0-y0u">
+                                <rect key="frame" x="58" y="209" width="258" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <connections>
+                                    <outlet property="delegate" destination="YiR-ri-m3I" id="Ocw-6F-ZJw"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Filter result by:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gPF-UT-fMG">
+                                <rect key="frame" x="16" y="91" width="203" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="name of the city" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ZB-gj-CfN">
+                                <rect key="frame" x="58" y="175" width="170" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="from date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fr6-kC-p6F">
+                                <rect key="frame" x="58" y="299" width="170" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="to date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3tm-Xg-oKa">
+                                <rect key="frame" x="58" y="380" width="170" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="choose start date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="43K-MV-9GV">
+                                <rect key="frame" x="58" y="333" width="258" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="YiR-ri-m3I" id="grP-LZ-pnK"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="choose end date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ovo-bv-LzH">
+                                <rect key="frame" x="58" y="414" width="258" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="YiR-ri-m3I" id="qs8-Dz-KVi"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="keywords" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yLz-Gg-KRx">
+                                <rect key="frame" x="58" y="499" width="109" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2vx-Ql-LtL">
+                                <rect key="frame" x="66" y="543" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Sun"/>
+                                <connections>
+                                    <action selector="keywordWasSelectedAction:" destination="YiR-ri-m3I" eventType="touchUpInside" id="x4B-l5-HgN"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9mW-BN-o3q">
+                                <rect key="frame" x="172" y="543" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Rain"/>
+                                <connections>
+                                    <action selector="keywordWasSelectedAction:" destination="YiR-ri-m3I" eventType="touchUpInside" id="AeG-KY-sL8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XnJ-ru-U8n">
+                                <rect key="frame" x="269" y="543" width="49" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Cloudy"/>
+                                <connections>
+                                    <action selector="keywordWasSelectedAction:" destination="YiR-ri-m3I" eventType="touchUpInside" id="2rf-sf-KPc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mpl-K5-gBr">
+                                <rect key="frame" x="66" y="603" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Fog"/>
+                                <connections>
+                                    <action selector="keywordWasSelectedAction:" destination="YiR-ri-m3I" eventType="touchUpInside" id="fEi-Bd-m34"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jg5-n8-MAy">
+                                <rect key="frame" x="256" y="603" width="75" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Clear night"/>
+                                <connections>
+                                    <action selector="keywordWasSelectedAction:" destination="YiR-ri-m3I" eventType="touchUpInside" id="R6O-Lx-DFg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3DF-ao-pJL">
+                                <rect key="frame" x="168" y="603" width="38" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Snow"/>
+                                <connections>
+                                    <action selector="keywordWasSelectedAction:" destination="YiR-ri-m3I" eventType="touchUpInside" id="hiK-9c-G8K"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="uNJ-cR-owR"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Advanced search" id="huG-gC-sC0">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="IJx-CI-RmZ">
+                            <connections>
+                                <segue destination="DNf-Uz-CTn" kind="unwind" identifier="SegueBackToSearchController" unwindAction="unwindSegueWithSegue:" id="xhf-xQ-ac1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="cityNameTextField" destination="Vlj-I0-y0u" id="iSI-Fl-k1e"/>
+                        <outlet property="endDateTextField" destination="Ovo-bv-LzH" id="z5u-K9-fOW"/>
+                        <outlet property="startDateTextField" destination="43K-MV-9GV" id="jT9-HI-l09"/>
+                        <outletCollection property="keywordButtonsCollection" destination="2vx-Ql-LtL" collectionClass="NSMutableArray" id="Lqr-KY-pga"/>
+                        <outletCollection property="keywordButtonsCollection" destination="Mpl-K5-gBr" collectionClass="NSMutableArray" id="ybS-6g-Q2L"/>
+                        <outletCollection property="keywordButtonsCollection" destination="9mW-BN-o3q" collectionClass="NSMutableArray" id="Li2-OH-KUG"/>
+                        <outletCollection property="keywordButtonsCollection" destination="3DF-ao-pJL" collectionClass="NSMutableArray" id="z9O-Xp-9DE"/>
+                        <outletCollection property="keywordButtonsCollection" destination="XnJ-ru-U8n" collectionClass="NSMutableArray" id="lgO-Cx-ZhM"/>
+                        <outletCollection property="keywordButtonsCollection" destination="Jg5-n8-MAy" collectionClass="NSMutableArray" id="Kdp-aH-k4L"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e77-3a-lVG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2573.5999999999999" y="775.86206896551732"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Xaj-s2-sap">

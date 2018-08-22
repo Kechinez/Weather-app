@@ -17,6 +17,18 @@ enum WeatherType: String {
     case cloud      = "cloudy.jpg"
     case night      = "night.jpg"
     case unknown    = "unknown"
+    
+    var corespondingImageName: String {
+        return self.rawValue
+    }
+    var weatherKeyword: String {
+        guard self.corespondingImageName == "unknown" else {
+            return "unknown"
+        }
+        let stringToBeCut = self.corespondingImageName
+        let index = stringToBeCut.range(of: ".")!.upperBound
+        return String(stringToBeCut.suffix(from: index))
+    }
 }
 
 
