@@ -22,12 +22,12 @@ enum WeatherType: String {
         return self.rawValue
     }
     var weatherKeyword: String {
-        guard self.corespondingImageName == "unknown" else {
+        guard self.corespondingImageName != "unknown" else {
             return "unknown"
         }
         let stringToBeCut = self.corespondingImageName
-        let index = stringToBeCut.range(of: ".")!.upperBound
-        return String(stringToBeCut.suffix(from: index))
+        let index = stringToBeCut.range(of: ".")!.lowerBound
+        return String(stringToBeCut.prefix(upTo: index))
     }
 }
 
@@ -43,6 +43,26 @@ struct Weather {
 
 
 
+
+protocol SavedWeatherConverting {
+    func convertingToSavedWeather() -> SavedWeather?
+}
+
+
+
+
+extension Weather: SavedWeatherConverting {
+    
+    func convertingToSavedWeather() -> SavedWeather? {
+        var savedWeather: SavedWeather?
+        savedWeather?.humidity = self.humidity
+        savedWeather?.pressure = self.pressure
+        savedWeather?.temperature = self.temperature
+        savedWeather?.wind = self.wind
+        savedWeather?.weatherKeyword = self.weatherType.weatherKeyword
+        return savedWeather
+    }
+}
 
 
 
@@ -68,10 +88,11 @@ extension Weather {
         case "clear-day": return .sun
         case "clear-night", "partly-cloudy-night": return .night
         case "fog": return .fog
-        case "couldy", "partly-cloudy-day": return .cloud
+        case "cloudy", "partly-cloudy-day": return .cloud
         case "sleet", "snow": return .snow
         case "rain": return .rain
         default: return .unknown
+            
         }
     }
     

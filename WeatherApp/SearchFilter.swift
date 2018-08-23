@@ -9,26 +9,50 @@
 import Foundation
 
 
+struct FilterOptions: OptionSet {
+    let rawValue: Int
+    static let valueForInit = FilterOptions(rawValue: 1 << 0)
+    static let byCityName = FilterOptions(rawValue: 1 << 1)
+    static let byKeywords = FilterOptions(rawValue: 1 << 2)
+    static let byDates = FilterOptions(rawValue: 1 << 3)
+    static let bySingleDate = FilterOptions(rawValue: 1 << 4)
+    
+}
+
+
+
 struct SearchFilter {
     var cityKeyword: String?
     var keywords: [String]?
     var startDate: Date?
     var endDate: Date?
+    var usedOptions: FilterOptions
+    
     
     init?(cityKeyword: String?, addedKeywords: [String: Int], startDate: Date?, endDate: Date?) {
         if cityKeyword == nil && addedKeywords.isEmpty && startDate == nil && endDate == nil {
             return nil
         }
-        self.cityKeyword = (cityKeyword != nil ? cityKeyword : nil)
-        self.startDate = (startDate != nil ? startDate : nil)
-        self.endDate = (endDate != nil ? endDate : nil)
-        
-        guard !addedKeywords.isEmpty else { return }
-        var tempKeyword: [String] = []
-        for (key, _) in addedKeywords {
-            tempKeyword.append(key)
+        self.usedOptions = [.valueForInit]
+        if cityKeyword != "" {
+            self.cityKeyword = cityKeyword
+            self.usedOptions.insert(.byCityName)
         }
-        self.keywords = tempKeyword
+        if startDate != nil || endDate != nil {
+            self.startDate = (startDate != nil ? startDate : nil)
+            self.endDate = (endDate != nil ? endDate : nil)
+            let dateOption: FilterOptions = (startDate != nil && endDate != nil ? .byDates : .bySingleDate)
+            self.usedOptions.insert(dateOption)
+        }
+        
+        if !addedKeywords.isEmpty {
+            var tempKeyword: [String] = []
+            for (key, _) in addedKeywords {
+                tempKeyword.append(key.lowercased())
+            }
+            self.keywords = tempKeyword
+            self.usedOptions.insert(.byKeywords)
+        }
     }
     
     

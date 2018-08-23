@@ -21,14 +21,14 @@ class SearchFilterViewController: UIViewController, UITextFieldDelegate {
     var startDate: Date? {
         didSet(newValue) {
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "MM.dd.yyyy"
+            dateFormatter.dateFormat = "yyyy-MM-dd"
             startDateTextField.text = dateFormatter.string(from: startDate!)
         }
     }
     var endDate: Date? {
         didSet(newValue) {
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "MM.dd.yyyy"
+            dateFormatter.dateFormat = "dd-MM-yyyy"
             endDateTextField.text = dateFormatter.string(from: endDate!)
         }
     }
@@ -42,12 +42,11 @@ class SearchFilterViewController: UIViewController, UITextFieldDelegate {
         if addedKeywords[buttonTitle] == nil {
             addedKeywords[buttonTitle] = sender.tag
             sender.tintColor = UIColor.darkGray
-            print("item added")
         } else {
             addedKeywords.removeValue(forKey: buttonTitle)
             sender.tintColor = UIColor.blue
-            print("item deleted")
         }
+        
     }
     
     
