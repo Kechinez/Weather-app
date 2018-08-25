@@ -7,4 +7,5 @@ Weather-app is a learning project. The idea of the app is monitoring of the weat
 * practice with implementing MVC pattern 
 * practice with network asynchronous callbacks
 * practice with UIStackView for Auto layout in Storyboard
+* practice with Bit Mask in Swift (OptionSet)
 * practice software patterns such as extensions and protocols
