@@ -1,0 +1,10 @@
+# Weather-app
+Weather-app is a learning project. The idea of the app is monitoring of the weather and saveing the weather data into device memory. 
+### Messenger-app project summary
+* practice with creating UI in storyboard
+* practice with using Alamofire for network stack
+* practice with CoreData (saving data and fetching data using advanced predicates)
+* practice with implementing MVC pattern 
+* practice with network asynchronous callbacks
+* practice with UIStackView for Auto layout in Storyboard
+* practice software patterns such as extensions and protocols
