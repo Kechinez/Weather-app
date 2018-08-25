@@ -34,7 +34,8 @@
                                             <constraint firstAttribute="height" constant="30" id="a2k-9b-xdb"/>
                                             <constraint firstAttribute="width" constant="30" id="c7g-ib-d2q"/>
                                         </constraints>
-                                        <state key="normal" image="searchIcon"/>
+                                        <color key="tintColor" red="0.97301316624365486" green="0.40627736066072578" blue="0.44930768151071215" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" image="closeIcon"/>
                                         <connections>
                                             <action selector="cancelButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OQt-5b-OB5"/>
                                         </connections>
@@ -186,7 +187,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="kew-8v-5Oa" detailTextLabel="DqJ-rp-Hd7" style="IBUITableViewCellStyleSubtitle" id="ZN0-64-zL0" customClass="CellClassTableViewCell" customModule="WeatherApp" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="kew-8v-5Oa" detailTextLabel="DqJ-rp-Hd7" style="IBUITableViewCellStyleSubtitle" id="ZN0-64-zL0">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZN0-64-zL0" id="GKM-Cy-f5p">
@@ -335,9 +336,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jg5-n8-MAy">
-                                <rect key="frame" x="256" y="603" width="75" height="30"/>
+                                <rect key="frame" x="275" y="603" width="38" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Clear night"/>
+                                <state key="normal" title="Night"/>
                                 <connections>
                                     <action selector="keywordWasSelectedAction:" destination="YiR-ri-m3I" eventType="touchUpInside" id="R6O-Lx-DFg"/>
                                 </connections>
@@ -397,6 +398,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="searchIcon" width="53" height="53"/>
+        <image name="closeIcon" width="24" height="24"/>
     </resources>
 </document>

@@ -25,9 +25,7 @@ class SavedWeather: NSManagedObject {
                 completionHandler(result)
             } catch {
                 print(error)
-                
             }
-        
         }
     }
     

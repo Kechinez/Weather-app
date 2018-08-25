@@ -29,6 +29,7 @@ struct SearchFilter {
     var usedOptions: FilterOptions
     
     
+    
     init?(cityKeyword: String?, addedKeywords: [String: Int], startDate: Date?, endDate: Date?) {
         if cityKeyword == nil && addedKeywords.isEmpty && startDate == nil && endDate == nil {
             return nil
@@ -48,6 +49,7 @@ struct SearchFilter {
         if !addedKeywords.isEmpty {
             var tempKeyword: [String] = []
             for (key, _) in addedKeywords {
+                print(key.lowercased())
                 tempKeyword.append(key.lowercased())
             }
             self.keywords = tempKeyword

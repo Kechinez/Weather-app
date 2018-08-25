@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchFilterViewController: UIViewController, UITextFieldDelegate {
+class SearchFilterViewController: UIViewController {
     
     @IBOutlet var keywordButtonsCollection: [UIButton]!
     @IBOutlet weak var endDateTextField: UITextField!
@@ -36,6 +36,38 @@ class SearchFilterViewController: UIViewController, UITextFieldDelegate {
     
     
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(cancelDatePicker))
+        view!.addGestureRecognizer(tapGestureRecognizer)
+        
+        datePicker = UIDatePicker()
+        datePicker?.datePickerMode = .date
+        datePicker?.addTarget(self, action: #selector(dateChange(datePicker:)), for: .valueChanged)
+        
+        endDateTextField.inputView = datePicker
+        startDateTextField.inputView = datePicker
+        
+    }
+
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SegueBackToSearchController"{
+            if let destViewController = segue.destination as? SearchViewController {
+                guard let searchFilter = SearchFilter(cityKeyword: cityNameTextField.text, addedKeywords: addedKeywords, startDate: startDate, endDate: endDate) else { return }
+                destViewController.searchFilter = searchFilter
+            }
+        }
+    }
+    
+    
+    
+    
+    
+    //MARK: - DatePicker methods
+    
     @IBAction func keywordWasSelectedAction(_ sender: UIButton) {
         guard let buttonTitle = sender.titleLabel?.text else { return }
         
@@ -51,7 +83,7 @@ class SearchFilterViewController: UIViewController, UITextFieldDelegate {
     
     
     @objc func dateChange(datePicker: UIDatePicker) {
-      
+        
         if startDateTextField.isFirstResponder {
             startDate = datePicker.date
         } else {
@@ -64,31 +96,15 @@ class SearchFilterViewController: UIViewController, UITextFieldDelegate {
         view.endEditing(true)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(cancelDatePicker))
-        view!.addGestureRecognizer(tapGestureRecognizer)
-        
-        datePicker = UIDatePicker()
-        datePicker?.datePickerMode = .date
-        datePicker?.addTarget(self, action: #selector(dateChange(datePicker:)), for: .valueChanged)
-        
-        endDateTextField.inputView = datePicker
-        startDateTextField.inputView = datePicker
-        
-        // Do any additional setup after loading the view.
-    }
-
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "SegueBackToSearchController"{
-            if let destViewController = segue.destination as? SearchViewController {
-                guard let searchFilter = SearchFilter(cityKeyword: cityNameTextField.text, addedKeywords: addedKeywords, startDate: startDate, endDate: endDate) else { return }
-                destViewController.searchFilter = searchFilter
-            }
-        }
-    }
+}
+
+
+
+
+
+//MARK: - TextField delegate methods
+extension SearchFilterViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()

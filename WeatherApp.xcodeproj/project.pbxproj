@@ -22,7 +22,7 @@
 		3D5C162C212D62E80008D303 /* SearchFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5C162B212D62E80008D303 /* SearchFilterViewController.swift */; };
 		3D5C162E212D7C910008D303 /* SearchFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5C162D212D7C910008D303 /* SearchFilter.swift */; };
 		3D5C1630212DB9CA0008D303 /* SavedWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5C162F212DB9CA0008D303 /* SavedWeather.swift */; };
-		3D5C1632212DE0BD0008D303 /* CellClassTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5C1631212DE0BD0008D303 /* CellClassTableViewCell.swift */; };
+		3D5C16382131785B0008D303 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5C16372131785B0008D303 /* CoreDataStack.swift */; };
 		A8FDA2CA11D6F0CA43D53742 /* Pods_WeatherApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39269D2C4D7BE080DB0077D8 /* Pods_WeatherApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -45,7 +45,7 @@
 		3D5C162B212D62E80008D303 /* SearchFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFilterViewController.swift; sourceTree = "<group>"; };
 		3D5C162D212D7C910008D303 /* SearchFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFilter.swift; sourceTree = "<group>"; };
 		3D5C162F212DB9CA0008D303 /* SavedWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedWeather.swift; sourceTree = "<group>"; };
-		3D5C1631212DE0BD0008D303 /* CellClassTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellClassTableViewCell.swift; sourceTree = "<group>"; };
+		3D5C16372131785B0008D303 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		93990996C7BCD0035FDB1888 /* Pods-WeatherApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherApp/Pods-WeatherApp.debug.xcconfig"; sourceTree = "<group>"; };
 		FE1599AFCA44E44B3C24D4E4 /* Pods-WeatherApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherApp/Pods-WeatherApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -91,25 +91,57 @@
 		3D5C1609212AC6000008D303 /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
-				3D5C160A212AC6000008D303 /* AppDelegate.swift */,
-				3D5C160C212AC6000008D303 /* WeatherViewController.swift */,
-				3D5C160E212AC6000008D303 /* Main.storyboard */,
-				3D5C161F212C25260008D303 /* WeatherView.swift */,
-				3D5C1614212AC6030008D303 /* Assets.xcassets */,
-				3D5C1616212AC6030008D303 /* LaunchScreen.storyboard */,
+				3D5C163321314B0E0008D303 /* Model */,
+				3D5C163421314B1D0008D303 /* View */,
+				3D5C163521314B230008D303 /* Controller */,
+				3D5C163621314B9D0008D303 /* Network */,
 				3D5C1619212AC6030008D303 /* Info.plist */,
-				3D5C1611212AC6000008D303 /* WeatherApp.xcdatamodeld */,
-				3D5C1621212C36F50008D303 /* NetworkLogic.swift */,
-				3D5C1623212C3B420008D303 /* Weather.swift */,
-				3D5C1625212C3DD70008D303 /* Coordinates.swift */,
-				3D5C1627212C703C0008D303 /* JsonParsingProtocol.swift */,
-				3D5C1629212D62BA0008D303 /* SearchViewController.swift */,
-				3D5C162B212D62E80008D303 /* SearchFilterViewController.swift */,
-				3D5C162D212D7C910008D303 /* SearchFilter.swift */,
-				3D5C162F212DB9CA0008D303 /* SavedWeather.swift */,
-				3D5C1631212DE0BD0008D303 /* CellClassTableViewCell.swift */,
+				3D5C1616212AC6030008D303 /* LaunchScreen.storyboard */,
+				3D5C160A212AC6000008D303 /* AppDelegate.swift */,
+				3D5C160E212AC6000008D303 /* Main.storyboard */,
+				3D5C1614212AC6030008D303 /* Assets.xcassets */,
 			);
 			path = WeatherApp;
+			sourceTree = "<group>";
+		};
+		3D5C163321314B0E0008D303 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3D5C1623212C3B420008D303 /* Weather.swift */,
+				3D5C1625212C3DD70008D303 /* Coordinates.swift */,
+				3D5C162D212D7C910008D303 /* SearchFilter.swift */,
+				3D5C162F212DB9CA0008D303 /* SavedWeather.swift */,
+				3D5C1611212AC6000008D303 /* WeatherApp.xcdatamodeld */,
+				3D5C16372131785B0008D303 /* CoreDataStack.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3D5C163421314B1D0008D303 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3D5C161F212C25260008D303 /* WeatherView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3D5C163521314B230008D303 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3D5C162B212D62E80008D303 /* SearchFilterViewController.swift */,
+				3D5C160C212AC6000008D303 /* WeatherViewController.swift */,
+				3D5C1629212D62BA0008D303 /* SearchViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		3D5C163621314B9D0008D303 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				3D5C1627212C703C0008D303 /* JsonParsingProtocol.swift */,
+				3D5C1621212C36F50008D303 /* NetworkLogic.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		B46E5C9F66FACC160504B74E /* Pods */ = {
@@ -250,12 +282,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D5C1630212DB9CA0008D303 /* SavedWeather.swift in Sources */,
-				3D5C1632212DE0BD0008D303 /* CellClassTableViewCell.swift in Sources */,
 				3D5C1613212AC6000008D303 /* WeatherApp.xcdatamodeld in Sources */,
 				3D5C160D212AC6000008D303 /* WeatherViewController.swift in Sources */,
 				3D5C162E212D7C910008D303 /* SearchFilter.swift in Sources */,
 				3D5C1626212C3DD70008D303 /* Coordinates.swift in Sources */,
 				3D5C162A212D62BA0008D303 /* SearchViewController.swift in Sources */,
+				3D5C16382131785B0008D303 /* CoreDataStack.swift in Sources */,
 				3D5C162C212D62E80008D303 /* SearchFilterViewController.swift in Sources */,
 				3D5C1622212C36F50008D303 /* NetworkLogic.swift in Sources */,
 				3D5C1628212C703C0008D303 /* JsonParsingProtocol.swift in Sources */,

@@ -27,9 +27,11 @@ enum WeatherType: String {
         }
         let stringToBeCut = self.corespondingImageName
         let index = stringToBeCut.range(of: ".")!.lowerBound
+        print(String(stringToBeCut.prefix(upTo: index)))
         return String(stringToBeCut.prefix(upTo: index))
     }
 }
+
 
 
 struct Weather {
@@ -42,27 +44,6 @@ struct Weather {
 
 
 
-
-
-protocol SavedWeatherConverting {
-    func convertingToSavedWeather() -> SavedWeather?
-}
-
-
-
-
-extension Weather: SavedWeatherConverting {
-    
-    func convertingToSavedWeather() -> SavedWeather? {
-        var savedWeather: SavedWeather?
-        savedWeather?.humidity = self.humidity
-        savedWeather?.pressure = self.pressure
-        savedWeather?.temperature = self.temperature
-        savedWeather?.wind = self.wind
-        savedWeather?.weatherKeyword = self.weatherType.weatherKeyword
-        return savedWeather
-    }
-}
 
 
 

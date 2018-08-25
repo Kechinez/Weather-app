@@ -9,7 +9,10 @@
 import Foundation
 import Alamofire
 
+
+
 typealias JSON = [String: AnyObject]
+
 
 enum StringUrls {
     case GoogleMapsGeocoding(cityName: String)
@@ -58,6 +61,7 @@ extension Networking {
     }
     
     
+    
     func requestTranslationNameToCoordinates(with name: String, completionHandler: @escaping ((Coordinates?) -> ())) {
         
         let request = StringUrls.GoogleMapsGeocoding(cityName: name)
@@ -73,7 +77,6 @@ extension Networking {
             }
             completionHandler(coordinates)
         }
-        
     }
     
 }

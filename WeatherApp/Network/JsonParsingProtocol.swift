@@ -38,6 +38,7 @@ extension Weather: ParsingJSON {
 
 
 
+
 extension Coordinates: ParsingJSON {
     init?(jsonToBeParsedToWeatherObject: JSON) { return nil }
     
@@ -59,5 +60,5 @@ extension Coordinates: ParsingJSON {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: RequestedCityWasUpdatedNotificationKey), object: nil, userInfo: ["value" : cityName])
         
     }
-    
+
 }

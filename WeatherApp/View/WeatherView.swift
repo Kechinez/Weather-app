@@ -9,16 +9,16 @@
 import UIKit
 
 class WeatherView: UIView {
-    @IBOutlet var labelsCollection: [UILabel]!
-    @IBOutlet weak var cancelButtonConstraint: NSLayoutConstraint!
-    @IBOutlet weak var searchTextFieldConstarint: NSLayoutConstraint!
-    @IBOutlet weak var humidityLabel: UILabel!
-    @IBOutlet weak var pressureLabel: UILabel!
-    @IBOutlet weak var windLabel: UILabel!
-    @IBOutlet weak var backgroundLabel: UIImageView!
-    @IBOutlet weak var tempLabel: UILabel!
-    @IBOutlet weak var cityLabel: UILabel!
-    @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet private var labelsCollection: [UILabel]!
+    @IBOutlet private weak var cancelButtonConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var searchTextFieldConstarint: NSLayoutConstraint!
+    @IBOutlet private weak var humidityLabel: UILabel!
+    @IBOutlet private weak var pressureLabel: UILabel!
+    @IBOutlet private weak var windLabel: UILabel!
+    @IBOutlet private weak var backgroundLabel: UIImageView!
+    @IBOutlet private weak var tempLabel: UILabel!
+    @IBOutlet private weak var cityLabel: UILabel!
+    @IBOutlet private weak var searchTextField: UITextField!
     
     var searchInputText: String? {
         return (searchTextField.text != "" ? searchTextField.text! : "")
@@ -36,11 +36,9 @@ class WeatherView: UIView {
     
     
     
-    func hideCancelButton() {
-        cancelButtonConstraint.constant = -30.0
-    }
     
     
+    // MARK: - Animation methods
     
     func animateCancelButtonAppearing() {
         cancelButtonConstraint.constant = 20
@@ -59,11 +57,21 @@ class WeatherView: UIView {
         UIView.animate(withDuration: 0.5) {
             self.layoutIfNeeded()
         }
+        searchTextField.resignFirstResponder()
     }
     
     
+    func hideCancelButton() {
+        cancelButtonConstraint.constant = -30.0
+    }
     
-    func updateTextColor(accordingToThe weatherType: WeatherType) {
+
+    
+    
+    
+    // MARK: - Updating UI methods
+    
+     private func updateTextColor(accordingToThe weatherType: WeatherType) {
         var textColor: UIColor!
         switch weatherType {
         case .night:
@@ -88,7 +96,7 @@ class WeatherView: UIView {
     }
     
     
-    func updateGradientLayerColor(accordingToThe weatherType: WeatherType) {
+    private func updateGradientLayerColor(accordingToThe weatherType: WeatherType) {
         
         switch weatherType {
         case .night:
@@ -122,7 +130,7 @@ class WeatherView: UIView {
     
     
     
-    func updateBackgroundImageAlpha(accordingToThe weatherType: WeatherType) {
+    private func updateBackgroundImageAlpha(accordingToThe weatherType: WeatherType) {
         switch weatherType {
         case .night: backgroundLabel.alpha = 0.45
         case .rain: backgroundLabel.alpha = 0.25
@@ -133,7 +141,6 @@ class WeatherView: UIView {
         default: break
         }
     }
-    
     
     
     func updateUI(with weather: Weather, in city: String) {
